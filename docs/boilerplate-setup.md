@@ -27,6 +27,11 @@ Express App generator:
 
 - https://expressjs.com/en/starter/generator.html
 
+
+- seems that by default uses JADE as its template engine 
+https://www.npmjs.com/package/jade
+
+
 npx express-generator
 Need to install the following packages:
   express-generator@4.16.1

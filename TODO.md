@@ -16,3 +16,6 @@ UI
 - load bootstrap into the ejs webpage 
 - load jquery into the ejs webpage 
 
+--> need to:
+
+npm install ejs --save
