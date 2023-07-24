@@ -19,3 +19,11 @@ UI
 --> need to:
 
 npm install ejs --save
+
+
+ejs migration:
+- missing layout with CSS 
+
+CSS
+- missing fonts
+- missing CSS post processor (if we need one)
