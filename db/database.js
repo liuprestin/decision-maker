@@ -234,3 +234,21 @@ const addSurveyResponse = function(survey) {
 }
 
 
+module.exports = {
+ getAllQuestions,
+ getAnswerbyId,
+ getAnswerbyQuestionId,
+ getQuestions,
+ getQuestionsBySurvey,
+ getsurveycreator,
+ getSurvey,
+ addAnswer,
+ addQuestions,
+ addResponse,
+ addResponse,
+ addSurvey,
+ addSurveyResponse,addSurveycreator
+};
+
+
+
