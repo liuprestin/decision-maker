@@ -24,6 +24,17 @@ a {
   z-index: -1; 
 }
 
+.generic-container {
+  background: white;
+  border-radius: 15px;
+}
+
+.header-container {
+  font-weight: bold;
+  font-size: 48px;
+  color: white;
+}
+
 /* -------------- Mobile Specific -------------- */
 @media only screen and (max-width: 768px) {
   .desktop {
