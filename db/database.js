@@ -49,7 +49,7 @@ const getsurveycreator = function (id) {
 
 /**
  * Get survey creator from the database either with Id or no parameter.
- * @param {{name: string, password: string, email: string}} survey
+ * @param {{adminUrl: string, shareUrl: string}} survey
  * @return {Promise<{}>} A promise to the survey.
  *
  */
