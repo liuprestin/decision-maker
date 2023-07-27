@@ -245,9 +245,9 @@ module.exports = {
  addAnswer,
  addQuestions,
  addResponse,
- addResponse,
  addSurvey,
- addSurveyResponse,addSurveycreator
+ addSurveyResponse,
+ addSurveycreator
 };
 
 

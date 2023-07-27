@@ -10,12 +10,16 @@ app.use(express.json());
 
 const surveyRoutes = require("./routes/surveyRoute");
 const questionRoutes = require("./routes/questionsRoute");
+const insightRoutes = require("./routes/insightRoute");
+const responseRoutes = require("./routes/responseRoute");
 
 
 // /survey/endpoints
 app.use("/survey", surveyRoutes);
 //question endpoints
 app.use("/question",questionRoutes);
+app.use("insight", insightRoutes);
+app.use("response",responseRoutes);
 
 app.get("/test", (req, res) => {
   res.send("🤗");

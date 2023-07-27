@@ -2,11 +2,10 @@ const express = require("express");
 const database = require("../db/database");
 const router = express.Router();
 
-// Create a new Question 
 router.post("/create", (req, res) => {
-  const questions = req.body;  
+  const answer = req.body.answers;  
   database
-    .addQuestions(questions)
+    .addAnswer(answer)
     .then((result) => {
       if (!result) {
         return res.send({ error: "error" });
@@ -19,7 +18,7 @@ router.post("/create", (req, res) => {
 router.get("/:id", (req,res) => {
   const id = req.id;
   database
-  .getQuestions(id)
+  .getAnswerbyId(id)
   .then((result) => {
     if(!result) {
       return res.send({error: "error"});
@@ -29,28 +28,15 @@ router.get("/:id", (req,res) => {
   .catch((e) => res.send(e));
 });
 
-router.get("/survey",(req,res) => {
-  const id = req.id;
+router.get("/byquestionId", (req,res) => {
+  const id = req.body.questionId;
   database
-  .getQuestionsBySurvey(id)
+  .getAnswerbyQuestionId(id)
   .then((result) => {
     if(!result) {
-      return res.send({error:"error"});
+      return res.send({error: "error"});
     }
     res.send(result);
   })
+  .catch((e) => res.send(e));
 });
-
-router.get("/all",(req,res) => {
-  
-  database
-  .getAllQuestions()
-  .then((result) => {
-    if(!result) {
-      return res.send({error:"error"});
-    }
-    res.send(result);
-  })
-});
-
-module.exports = router;
