@@ -6,3 +6,40 @@ body {
 a {
   color: #00B7FF;
 }
+
+#background-image {
+  background-image: url('/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  min-width: 100%;
+  min-height: 100%;
+
+  width: 50%;
+  height: 50%;
+  z-index: -1; 
+}
+
+/* -------------- Mobile Specific -------------- */
+@media only screen and (max-width: 768px) {
+  .desktop {
+      display: none;
+  }
+  .mobile {
+      display: block;
+  }
+}
+
+/* ------------- Desktop Specific ------------- */
+@media only screen and (min-width: 769px) {
+  .desktop {
+      display: block;
+  }
+  .mobile {
+      display: none;
+  }
+}
