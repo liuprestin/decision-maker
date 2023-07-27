@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <head>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
 
-  <title>My Website</title>
-</head>
-<body>
-  <% include('partials/_header') %>
-  <h1>Welcome</h1>
-</body>
-<footer>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="stylesheets/insight.css" />
+    <title>Decision Maker</title>
+  </head>
+  <body>
+    <%- include('partials/_header') %>
 
-  <!-- jQuery -->
-  <script
-  src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <div id="background-image"></div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <div class="header-container position-absolute top-0 start-0 p-3">
+      <p>Decision Maker</p>
+    </div>
 
-</footer>
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-sm-6">
+          <div class="generic-container p-5">
+            <p>THERE BE GRAPHS HERE</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <%- include('partials/_footer') %>
+  <div>
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.slim.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </div>
 </html>
