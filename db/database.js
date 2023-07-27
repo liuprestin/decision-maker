@@ -6,18 +6,18 @@ const pool = require("./dbaccess");
  * @return {Promise<{}>} A promise to the survey.
  *
  */
-const addSurveycreator = function (user) {
+const addSurveycreator = function (survey) {
   const param = [survey.phone_number, survey.name, survey.email];
   pool
     .query(
       `
-   INSERT INTO survey_creator (Phone_number,name,email) .
-   Values($1,$2.$3) RETURNING *;
+   INSERT INTO survey_creator (Phone_number,name,email) 
+   Values($1,$2,$3) RETURNING *;
   `,
       param
     )
     .then((result) => {
-      return Promise.resolve(result.rows[0]);
+      return result.rows[0]; //Promise.resolve(result.rows[0]);
     })
     .catch((err) => {
       console.log(err.message);
@@ -33,7 +33,7 @@ const addSurveycreator = function (user) {
 const getsurveycreator = function (id) {
   let querystring =
     id === undefined
-      ? "SELECT * FROM survey_creator"
+      ? `SELECT * FROM survey_creator`
       : `SELECT * FROM surveys WHERE Id=$1`;
   let param = id === undefined ? [] : [id];
 
@@ -75,7 +75,7 @@ const getSurvey = function (id) {
   let querystring = `SELECT * from survey`;
   let optiopns = id === undefined ? [] : [id];
   if (id) {
-    querystring += `WHERE id=$1`;
+    querystring += `WHERE id= $1`;
   }
   pool
     .query(querystring, optiopns)
@@ -110,7 +110,7 @@ const getQuestions = function (id) {
   pool
     .query(
       `
-   SELECT * FROM questions WHERE id= $1;
+   SELECT * FROM questions WHERE id = $1;
   `,
       param
     )
@@ -144,7 +144,7 @@ const getQuestionsBySurvey = function (id) {
   pool
     .query(
       `
-   SELECT * FROM questions WHERE survey_id= $1;
+   SELECT * FROM questions WHERE survey_id = $1;
   `,
       param
     )
@@ -206,7 +206,7 @@ const addResponse = function(response) {
   const param = [response.answerId,response.responseId,response.answerRank];
   pool
   .query(
-    `INSERT INTO response_answers(answer_id,response_id,answer_id)values($1,$2,$3) RETURNING *;`,
+    `INSERT INTO response_answers(answer_id,response_id,answer_rank)values($1,$2,$3) RETURNING *;`,
     param
   )
   .then((result) => {
