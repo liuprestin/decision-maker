@@ -1,7 +1,7 @@
 const HOST = "localhost";
 
-const USER=  "labber";
-const PASSWORD =  "labber";
-const DATABASE = "midterm";
+const USER=  "lexbit";
+const PASSWORD =  "";
+const DATABASE = "decisioner";
 
 module.exports = {HOST, USER, PASSWORD, DATABASE};

@@ -1,3 +1,9 @@
-Decision Maker - the Webapp
+# Decision Maker - the Webapp
 
---> FIXME
+# Getting started:
+
+- npm install
+
+- steps to setup postgres
+- steps to setup postgres db
+- 
