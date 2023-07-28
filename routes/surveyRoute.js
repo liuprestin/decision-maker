@@ -40,7 +40,7 @@ router.post("/create", (req, res) => {
       if (!result) {
         return res.send({ error: "error" });
       }
-      res.send(resut);
+      res.send(result);
     })
     .catch((e) => res.send(e));
 });

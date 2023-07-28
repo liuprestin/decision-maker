@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "ui_start": "nodemon ./bin/www",
     "test": "mocha",
     "local": "npx nodemon -L server",
-    "backend_start": "node index"
+    "backend_start": "node backend_index"
   },
   "dependencies": {
     "bootstrap": "^5.3.0",
