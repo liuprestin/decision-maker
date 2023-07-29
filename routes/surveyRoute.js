@@ -2,8 +2,11 @@ const express = require("express");
 const database = require("../db/database");
 const router = express.Router();
 
+const urlIdGenerate = require("../util/url_generate");
+
 // Create a new survey user
 router.post("/createuser", (req, res) => {
+  console.log("createuser");
   const user = req.body;  
   database
     .addSurveycreator(user)
@@ -17,7 +20,7 @@ router.post("/createuser", (req, res) => {
 });
 
 
-// Create a new survey user
+/*
 router.get("/fetchuser", (req, res) => {
   const user = req.body;  
   database
@@ -29,33 +32,44 @@ router.get("/fetchuser", (req, res) => {
       res.send(user);
     })
     .catch((e) => res.send(e));
-});
+}); */
 
 // Create a new survey 
-router.post("/create", (req, res) => {
+router.post("/create", async (req, res) => {
   const surveyData = req.body;  
-  database
-    .addSurvey(surveyData)
-    .then((result) => {
-      if (!result) {
-        return res.send({ error: "error" });
-      }
-      res.send(result);
-    })
-    .catch((e) => res.send(e));
-});
+  
+  try {
+    
+    const adminUrl = urlIdGenerate();
+    const sharedUrl = urlIdGenerate();
 
 
-router.get("/fetchsurvey:id", (req, res) => {
-    database
-    .getSurvey(req.id)
-    .then((result) => {
-      if (!result) {
-        return res.send({ error: "error" });
+    const survey = await database.addSurvey({
+      adminUrl : adminUrl, 
+      sharedUrl : sharedUrl 
+    });
+
+    // Loop for each question and set of answers 
+    // add to the database
+    for (let item of surveyData) {
+      const question = await database.addQuestions({
+        surveyid: survey.id,
+        text: item.question
+      });
+
+      // Loop over all answers for a specific question
+      for (let answerText of item.answers) {
+        const answer = await database.addAnswer({
+          anwertext: answerText,
+          questionId: question.id
+        });
       }
-      res.send(result);
-    })
-    .catch((e) => res.send(e));
+    }
+    res.send({ success: true });
+  } catch (e) {
+    res.send(e);
+  }
 });
+
 
 module.exports = router;
