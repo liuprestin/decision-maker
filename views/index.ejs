@@ -25,7 +25,7 @@
       <div class="row justify-content-center">
         <div class="col-sm-6">
           <div class="form-container p-5">
-            <form action="/create" method="POST">
+            <form action="/survey/createuser" method="POST">
               <div class="mb-3">
                 <label for="phoneInput" class="form-label">Name</label>
                 <input type="text" name="name" class="form-control" id="nameInput" />
@@ -36,7 +36,7 @@
               </div>
               <div class="mb-3">
                 <label for="phoneInput" class="form-label">Add Phone Number</label>
-                <input type="text" name="phone" class="form-control" id="phoneInput" />
+                <input type="text" name="phonenumber" maxlength="14" class="form-control" id="phoneInput" />
               </div>
               <button type="submit" value="create" class="btn btn-primary">
                 Create Survey
@@ -52,7 +52,7 @@
   <div>
     <!-- jQuery -->
     <script
-      src="https://code.jquery.com/jquery-3.7.0.slim.min.js"
+      src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
       crossorigin="anonymous"
     ></script>
 
