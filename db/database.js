@@ -7,8 +7,10 @@ const pool = require("./dbaccess");
  *
  */
 const addSurveycreator = function (survey) {
-  const param = [survey.phone_number, survey.name, survey.email];
-  pool
+  
+  const param = [survey.phonenumber, survey.name, survey.email];
+  
+  return pool
     .query(
       `
    INSERT INTO survey_creator (Phone_number,name,email) 
@@ -17,6 +19,7 @@ const addSurveycreator = function (survey) {
       param
     )
     .then((result) => {
+      console.log(result.rows[0]);
       return result.rows[0]; //Promise.resolve(result.rows[0]);
     })
     .catch((err) => {
@@ -37,7 +40,7 @@ const getsurveycreator = function (id) {
       : `SELECT * FROM surveys WHERE Id=$1`;
   let param = id === undefined ? [] : [id];
 
-  pool
+ return  pool
     .query(querystring, param)
     .then((result) => {
       return Promise.resolve(result.rows[0]);
@@ -55,7 +58,7 @@ const getsurveycreator = function (id) {
  */
 const addSurvey = function (survey) {
   const param = [survey.adminUrl, survey.shareUrl];
-  pool
+  return pool
     .query(
       `
    INSERT INTO surveys(admin_url,Share_url)
@@ -77,7 +80,7 @@ const getSurvey = function (id) {
   if (id) {
     querystring += `WHERE id= $1`;
   }
-  pool
+ return  pool
     .query(querystring, optiopns)
     .then((result) => {
       return Promise.resolve(result.rows);
@@ -89,7 +92,7 @@ const getSurvey = function (id) {
 
 const addQuestions = function (questions) {
   const param = [questions.surveyid, questions.text];
-  pool
+ return  pool
     .query(
       `
    INSERT INTO questions(survey_id,question_text)
@@ -107,7 +110,7 @@ const addQuestions = function (questions) {
 
 const getQuestions = function (id) {
   const param = [id];
-  pool
+ return pool
     .query(
       `
    SELECT * FROM questions WHERE id = $1;
@@ -124,7 +127,7 @@ const getQuestions = function (id) {
 
 const getAllQuestions = function (id) {
   const param = [id];
-  pool
+return  pool
     .query(
       `
    SELECT * FROM questions;
@@ -141,7 +144,7 @@ const getAllQuestions = function (id) {
 
 const getQuestionsBySurvey = function (id) {
   const param = [id];
-  pool
+ return pool
     .query(
       `
    SELECT * FROM questions WHERE survey_id = $1;
@@ -159,7 +162,7 @@ const getQuestionsBySurvey = function (id) {
 const addAnswer = function (answer) {
   const param = [answer.anwertext, answer.questionId];
 
-  pool
+  return pool
     .query(
       `INSERT INTO answers(answer_text, question_id) values($1,$2) RETURNING *;`,
       param
@@ -174,7 +177,7 @@ const addAnswer = function (answer) {
 
 const getAnswerbyId = function(id){
   const param = [id];
-  pool
+  return pool
   .query(
     `SELECT * from answers where Id = $1`,
     param
@@ -189,7 +192,7 @@ const getAnswerbyId = function(id){
 
 const getAnswerbyQuestionId = function(questionId){
   const param = [questionId];
-  pool
+ return pool
   .query(
     `SELECT * FROM answers WHERE question_id = $1`,
     param
@@ -204,7 +207,7 @@ const getAnswerbyQuestionId = function(questionId){
 
 const addResponse = function(response) {
   const param = [response.answerId,response.responseId,response.answerRank];
-  pool
+  return pool
   .query(
     `INSERT INTO response_answers(answer_id,response_id,answer_rank)values($1,$2,$3) RETURNING *;`,
     param
@@ -220,7 +223,7 @@ const addResponse = function(response) {
 
 const addSurveyResponse = function(survey) {
   const param = [survey.id,survey.date];
-  pool
+  return pool
   .query(
     `INSERT INTO survey_responses(survey_id,response_date)values($1,$2) RETURNING *;`,
     param
