@@ -1,9 +1,15 @@
 # Decision Maker - the Webapp
 
-# Getting started:
+An app to create your answer ranking surveys.
 
-- npm install
+Note: incomplete app - not intended for production 
+learning purposes only
 
-- steps to setup postgres
-- steps to setup postgres db
-- 
+
+Dependencies:
+
+- Nodejs 18 lts + Npm 
+- postgresql
+
+For related libraries and project setup 
+see /docs/boilerplate-setup.md
