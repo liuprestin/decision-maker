@@ -16,7 +16,7 @@ router.post("/create", (req, res) => {
 });
 
 router.get("/:id", (req,res) => {
-  const id = req.id;
+  const id = req.params.id;
   database
   .getAnswerbyId(id)
   .then((result) => {
